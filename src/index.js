@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import { App } from './components/App.jsx';
 import { store } from './redux/store';
 import { Provider } from 'react-redux';
-
+// import { postContact } from './services/phonebook-API';
+// postContact({ name: 'ggg' });
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>

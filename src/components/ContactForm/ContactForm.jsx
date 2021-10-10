@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Form, Label } from './ContactForm.styled';
-import { v4 as uuidv4 } from 'uuid';
+
 import { useSelector, useDispatch } from 'react-redux';
-import * as actions from '../../redux/phonebook/phonebook-actions';
+
 import { getItems } from '../../redux/phonebook/phonebook-selectors';
+import { postContact } from '../../redux/phonebook/phonebook-operations';
 
 export const ContactForm = () => {
   const [name, setName] = useState('');
@@ -12,12 +13,10 @@ export const ContactForm = () => {
   const items = useSelector(getItems);
 
   const dispatch = useDispatch();
-  const addContact = () =>
-    dispatch(actions.addContact({ name, id: uuidv4(), number }));
+  const addContact = () => dispatch(postContact({ name, number }), [dispatch]);
 
   const formSubmit = e => {
     e.preventDefault();
-
     const isInList =
       items.length > 0
         ? items.some(

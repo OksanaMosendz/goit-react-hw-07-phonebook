@@ -2,11 +2,16 @@ import { Button, Li, P } from './ContactList.styled';
 import { useSelector, useDispatch } from 'react-redux';
 import * as actions from '../../redux/phonebook/phonebook-actions';
 import { getFilter, getItems } from '../../redux/phonebook/phonebook-selectors';
+import { fetchContacts } from '../../redux/phonebook/phonebook-operations';
+
+import { useEffect } from 'react';
 
 export const ContactList = () => {
   const items = useSelector(getItems);
   const filter = useSelector(getFilter);
   const dispatch = useDispatch();
+
+  useEffect(() => dispatch(fetchContacts()), [dispatch]);
 
   const filteredContacts = items.filter(contact =>
     contact.name.toLowerCase().includes(filter.toLowerCase()),
