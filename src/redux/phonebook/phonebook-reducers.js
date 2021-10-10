@@ -6,7 +6,6 @@ import { fetchContacts, postContact } from './phonebook-operations';
 const entities = createReducer([], {
   [fetchContacts.fulfilled]: (_, { payload }) => payload,
   [postContact.fulfilled]: (state, { payload }) => [...state, payload],
-
   [deleteContact]: (state, { payload }) =>
     state.filter(item => item.id !== payload),
 });
@@ -15,7 +14,9 @@ const isLoading = createReducer(false, {
   [fetchContacts.pending]: () => true,
   [fetchContacts.fulfilled]: () => false,
   [fetchContacts.rejected]: () => false,
-  // [addContact]: (state, { payload }) => [...state, payload],
+  [postContact.pending]: () => true,
+  [postContact.fulfilled]: () => false,
+  [postContact.rejected]: () => false,
   // [deleteContact]: (state, { payload }) =>
   //   state.filter(item => item.id !== payload),
 });
@@ -23,8 +24,8 @@ const isLoading = createReducer(false, {
 const error = createReducer(null, {
   [fetchContacts.rejected]: (_, action) => action.payload,
   [fetchContacts.pending]: () => null,
+  [postContact.rejected]: (_, action) => action.payload,
 
-  // [addContact]: (state, { payload }) => [...state, payload],
   // [deleteContact]: (state, { payload }) =>
   //   state.filter(item => item.id !== payload),
 });
