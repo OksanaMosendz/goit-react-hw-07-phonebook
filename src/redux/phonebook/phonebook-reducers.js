@@ -1,13 +1,17 @@
 import { combineReducers } from 'redux';
 import { createReducer } from '@reduxjs/toolkit';
-import { filterContacts, deleteContact } from './phonebook-actions';
-import { fetchContacts, postContact } from './phonebook-operations';
+import { filterContacts } from './phonebook-actions';
+import {
+  fetchContacts,
+  postContact,
+  deleteContact,
+} from './phonebook-operations';
 
 const entities = createReducer([], {
   [fetchContacts.fulfilled]: (_, { payload }) => payload,
   [postContact.fulfilled]: (state, { payload }) => [...state, payload],
-  [deleteContact]: (state, { payload }) =>
-    state.filter(item => item.id !== payload),
+  [deleteContact.fulfilled]: (state, { payload }) =>
+    state.filter(item => String(item.id) !== payload),
 });
 
 const isLoading = createReducer(false, {
@@ -18,13 +22,13 @@ const isLoading = createReducer(false, {
   [postContact.fulfilled]: () => false,
   [postContact.rejected]: () => false,
   // [deleteContact]: (state, { payload }) =>
-  //   state.filter(item => item.id !== payload),
+  //   state.filter(item => toitem.id !== payload),
 });
 
 const error = createReducer(null, {
-  [fetchContacts.rejected]: (_, action) => action.payload,
+  [fetchContacts.rejected]: (_, { payload }) => payload,
   [fetchContacts.pending]: () => null,
-  [postContact.rejected]: (_, action) => action.payload,
+  [postContact.rejected]: (_, { payload }) => payload,
 
   // [deleteContact]: (state, { payload }) =>
   //   state.filter(item => item.id !== payload),

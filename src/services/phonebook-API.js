@@ -23,3 +23,12 @@ export async function postContact(contact) {
   const json = await response.json();
   return json;
 }
+
+export async function deleteContact(id) {
+  await fetch(`${BASE_URL}/contacts/${id}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+}

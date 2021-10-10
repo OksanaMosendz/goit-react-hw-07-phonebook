@@ -1,49 +1,19 @@
 {
   "contacts": [
     {
-      "name": "oksana",
-      "number": 380977480388,
-      "id": "1"
+      "name": "sssssssssssssssssssss",
+      "number": "777777777777777777777777",
+      "id": 1
     },
     {
-      "name": "cat",
-      "number": 777777,
-      "id": "yWQBMve"
+      "name": "tttttttttttttttttt",
+      "number": "444444444444444444",
+      "id": 2
     },
     {
-      "name": "dog",
-      "number": 54545000000,
-      "id": "F5eeR0C"
-    },
-    {
-      "name": "dog",
-      "number": 54545000000,
-      "id": "RNQEA3m"
-    },
-    {
-      "name": "tttttttttttttt",
-      "number": "999999999999999",
-      "id": "lhDAF27"
-    },
-    {
-      "name": "yyyyyyyyyyyyyyyyyyyyyy",
-      "number": "0000000000000000000000",
-      "id": "RvREthu"
-    },
-    {
-      "name": "yyyyyyyyyyyyyyyy",
-      "number": "8888888888888",
-      "id": "gCYevxs"
-    },
-    {
-      "name": "rererer",
-      "number": "5555555555555",
-      "id": "4Iq7BL4"
-    },
-    {
-      "name": "tttttttttttttttt",
-      "number": "44444444444444",
-      "id": "8ju-050"
+      "name": "rrrr",
+      "number": "444444444444",
+      "id": 3
     }
   ]
 }
