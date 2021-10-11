@@ -20,17 +20,16 @@ export async function addContact(contact) {
     },
     body: JSON.stringify(contact),
   });
+
   const data = await response.json();
   return data;
 }
 
 export async function deleteContact(id) {
-  const response = await fetch(`${BASE_URL}/contacts/${id}`, {
+  await fetch(`${BASE_URL}/contacts/${id}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
     },
   });
-  const isContactDeleted = await response.ok;
-  return isContactDeleted;
 }

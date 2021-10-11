@@ -11,16 +11,22 @@ export const fetchContacts = () => async dispatch => {
   }
 };
 
- export const addContact = (contact)=>async dispatch=>{
-   dispatch(phonebookActions.addContactRequest());
-   try {
+export const addContact = contact => async dispatch => {
+  dispatch(phonebookActions.addContactRequest());
+  try {
     const response = await phonebookAPI.addContact(contact);
     dispatch(phonebookActions.addContactSuccess(response));
-   } catch (error) {
-    dispatch(phonebookActions.addContactError());
-   }
-},
+  } catch (error) {
+    dispatch(phonebookActions.addContactError(error));
+  }
+};
 
- export const deleteContact=()=>async dispatch=>{};
-
-
+export const deleteContact = id => async dispatch => {
+  dispatch(phonebookActions.deleteContactRequest());
+  try {
+    await phonebookAPI.deleteContact(id);
+    dispatch(phonebookActions.deleteContactSuccess(id));
+  } catch (error) {
+    dispatch(phonebookActions.deleteContactError(error));
+  }
+};

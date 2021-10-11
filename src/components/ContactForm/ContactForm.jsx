@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { Form, Label } from './ContactForm.styled';
-
 import { useSelector, useDispatch } from 'react-redux';
-
 import { getItems } from '../../redux/phonebook/phonebook-selectors';
 import { addContact } from '../../redux/phonebook/phonebook-operations';
 
