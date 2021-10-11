@@ -1,40 +1,26 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
 import * as phonebookAPI from '../../services/phonebook-API';
 import * as phonebookActions from './phonebook-actions';
+
 export const fetchContacts = () => async dispatch => {
   dispatch(phonebookActions.fetchContactsRequest());
-
   try {
     const entities = await phonebookAPI.fetchContacts();
     dispatch(phonebookActions.fetchContactsSuccess(entities));
   } catch (error) {
-    dispatch(phonebookActions.fetchBooksError(error));
+    dispatch(phonebookActions.fetchContactsError(error));
   }
 };
 
-// export const fetchContacts = createAsyncThunk(
-//   'contacts/fetchContacts',
-//   async () => {
-//     const entities = await phonebookAPI.fetchContacts();
-//     return entities;
-//   },
-// );
-
-export const addContact = createAsyncThunk(
-  'contacts/addContact',
-  async contact => {
+ export const addContact = (contact)=>async dispatch=>{
+   dispatch(phonebookActions.addContactRequest());
+   try {
     const response = await phonebookAPI.addContact(contact);
-    console.log(response.id);
-    return response;
-  },
-);
+    dispatch(phonebookActions.addContactSuccess(response));
+   } catch (error) {
+    dispatch(phonebookActions.addContactError());
+   }
+},
 
-export const deleteContact = createAsyncThunk(
-  'contacts/deleteContact',
-  async id => {
-    const isContactDeleted = await phonebookAPI.deleteContact(id);
-    if (isContactDeleted) {
-      return id;
-    }
-  },
-);
+ export const deleteContact=()=>async dispatch=>{};
+
+

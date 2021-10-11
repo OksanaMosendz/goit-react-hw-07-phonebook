@@ -12,7 +12,7 @@ import {
   deleteContactSuccess,
   deleteContactError,
   filterContacts,
-} from './phonebook-operations';
+} from './phonebook-actions';
 
 const entities = createReducer([], {
   [fetchContactsSuccess]: (_, { payload }) => payload,
