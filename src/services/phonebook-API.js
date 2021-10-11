@@ -12,7 +12,7 @@ export async function fetchContacts() {
   return data;
 }
 
-export async function postContact(contact) {
+export async function addContact(contact) {
   const response = await fetch(`${BASE_URL}/contacts`, {
     method: 'POST',
     headers: {
@@ -20,15 +20,17 @@ export async function postContact(contact) {
     },
     body: JSON.stringify(contact),
   });
-  const json = await response.json();
-  return json;
+  const data = await response.json();
+  return data;
 }
 
 export async function deleteContact(id) {
-  await fetch(`${BASE_URL}/contacts/${id}`, {
+  const response = await fetch(`${BASE_URL}/contacts/${id}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
     },
   });
+  const isContactDeleted = await response.ok;
+  return isContactDeleted;
 }
